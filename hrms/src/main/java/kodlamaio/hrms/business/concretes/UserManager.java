@@ -1,4 +1,4 @@
 package kodlamaio.hrms.business.concretes;
 
-public class UserService {
+public class UserManager {
 }

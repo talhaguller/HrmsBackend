@@ -32,6 +32,6 @@ public class CandidateManager implements CandidateService {
     @Override
     public Result add(Candidate candidate) {
         this.candidateDao.save(candidate);
-        return new SuccessResult("Ürün eklendi ");
+        return new SuccessResult("Kişi Eklenmiştir ");
     }
 }

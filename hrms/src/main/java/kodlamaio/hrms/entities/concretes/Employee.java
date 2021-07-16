@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -19,5 +20,8 @@ public class Employee extends User {
 
     @Column(name = "last_name")
     private String lastName;
+
+    @OneToMany(mappedBy = "employees")
+    private List<User> users;
 
 }
