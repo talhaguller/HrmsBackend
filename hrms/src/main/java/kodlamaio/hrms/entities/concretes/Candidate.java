@@ -12,20 +12,26 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "candidates")
-@PrimaryKeyJoinColumn(name = "id",  referencedColumnName = "id")
 public class Candidate extends User{
 
-    @Column(name = "first_name")
-    private String firstName;
+    @Id
+    @Column(name = "candidate_id")
+    private int candidate;
 
-    @Column(name = "last_name")
-    private String lastName;
+    @Column(name = "candidate_first_name")
+    private String candidateFirstName;
+
+    @Column(name = "candidate_last_name")
+    private String candidateLastName;
 
     @Column(name = "identity_number")
     private String identityNumber;
 
     @Column(name = "birth_year")
     private int birthYear;
+
+    @OneToMany(mappedBy = "candidate")
+    private List<User> users;
 
 
 }

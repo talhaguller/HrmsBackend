@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Data
@@ -25,6 +26,17 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    @ManyToOne()
+    @JoinColumn(name = "candidate_id")
+    private Candidate candidate;
+
+    @ManyToOne()
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
+
+    @ManyToOne()
+    @JoinColumn(name = "employer_id")
+    private Employer employer;
 
 
 }

@@ -12,8 +12,12 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "employers")
-@PrimaryKeyJoinColumn(name = "id",  referencedColumnName = "id")
 public class Employer extends User{
+
+
+    @Id
+    @Column(name = "employer_id")
+    private int employerId;
 
     @Column(name = "campany_name")
     private String campanyName;
@@ -24,7 +28,7 @@ public class Employer extends User{
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @OneToMany(mappedBy = "employers")
+    @OneToMany(mappedBy = "employer")
     private List<User> users;
 
 
