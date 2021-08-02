@@ -14,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Employee extends User {
 
+    @Id
     @Column(name = "employee_id")
     private int employeeId;
 

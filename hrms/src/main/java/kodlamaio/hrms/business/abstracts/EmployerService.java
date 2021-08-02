@@ -8,5 +8,21 @@ import java.util.List;
 
 public interface EmployerService {
     DataResult<List<Employer>> getAll();
+
     Result add(Employer employer);
+
+    DataResult<List<Employer>> getByCampanyName(String campanyName);
+
+    DataResult<List<Employer>> getByCampanyNameStartsWith(String campanyName);
+
+    DataResult<List<Employer>> getByCampanyNameContains(String campanyName);
+
+    DataResult<List<Employer>> getByWebAdress(String webAdress);
+
+    DataResult<List<Employer>> getByWebAdressStartsWith(String webAdress);
+
+    DataResult<List<Employer>> getByWebAdressContains(String webAdress);
+
+    DataResult<Employer> getByEmployerAndJobAdvertisimenet(String campanyName, boolean isActiveted);
+
 }

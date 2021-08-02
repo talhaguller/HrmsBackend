@@ -11,17 +11,15 @@ import java.util.List;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "job_titeles")
-public class JobTitle {
-
+@Table(name = "city")
+public class City {
     @Id
-    @Column(name = "job_titele_id")
-    private int jobTiteleId;
+    @Column(name = "city_id")
+    private int cityId;
 
-    @Column(name = "titele")
-    private String titele;
+    @Column(name = "city_name")
+    private String cityName;
 
-    @OneToMany(mappedBy = "job_titeles")
+    @OneToMany(mappedBy = "city")
     private List<JobAdvertisement> jobAdvertisements;
-
 }
