@@ -9,6 +9,8 @@ import kodlamaio.hrms.dataAccess.abstracts.EmployeeDao;
 import kodlamaio.hrms.entities.concretes.Candidate;
 import kodlamaio.hrms.entities.concretes.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -26,7 +28,15 @@ public class EmployeeManager implements EmployeeService {
 
     @Override
     public DataResult<List<Employee>> getAll() {
-        return new SuccessDataResult<List<Employee>>(this.employeeDao.findAll(),"Data listelendi");
+        return new SuccessDataResult<List<Employee>>(this.employeeDao.findAll(),"Veri listelendi");
+    }
+
+    @Override
+    public DataResult<List<Employee>> getAll(int pageNo, int pageSize) {
+
+        Pageable pageable = PageRequest.of(pageNo,pageSize);
+
+        return new SuccessDataResult<List<Employee>>(this.employeeDao.findAll(pageable).getContent(),"Veri Sıralandı");
     }
 
     @Override

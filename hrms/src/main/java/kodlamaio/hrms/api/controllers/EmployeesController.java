@@ -4,6 +4,7 @@ import kodlamaio.hrms.business.abstracts.EmployeeService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.Employee;
+import kodlamaio.hrms.entities.concretes.Employer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,9 +22,14 @@ public class EmployeesController {
     }
 
 
-    @GetMapping("/getall")
+    @GetMapping("/getAll")
     public DataResult<List<Employee>> getAll(){
         return this.employeeService.getAll();
+    }
+
+    @GetMapping("/getAllByPage")
+    public DataResult<List<Employee>> getAll(int pageNo, int pageSize) {
+        return this.employeeService.getAll(pageNo,pageSize);
     }
 
     @PostMapping("/add")

@@ -7,7 +7,10 @@ import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.CandidateDao;
 import kodlamaio.hrms.entities.concretes.Candidate;
+import kodlamaio.hrms.entities.concretes.JobAdvertisement;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,6 +29,15 @@ public class CandidateManager implements CandidateService {
     @Override
     public DataResult<List<Candidate>> getAll() {
         return new SuccessDataResult<List<Candidate>>(this.candidateDao.findAll(),"Data listelendi");
+
+    }
+
+    @Override
+    public DataResult<List<Candidate>> getAll(int pageNo, int pageSize) {
+
+        Pageable pageable = PageRequest.of(pageNo,pageSize);
+
+        return new SuccessDataResult<List<Candidate>>(this.candidateDao.findAll(pageable).getContent(),"Veri Sıralandı");
 
     }
 

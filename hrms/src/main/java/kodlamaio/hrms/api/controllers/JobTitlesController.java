@@ -25,7 +25,11 @@ public class JobTitlesController {
         return this.jobTitleService.getAll();
     }
 
-    @PostMapping("/add")
+    public DataResult<List<JobTitle>> getAll(int pageNo, int pageSize) {
+        return this.jobTitleService.getAll(pageNo,pageSize);
+    }
+
+        @PostMapping("/add")
     public Result add(@RequestBody JobTitle jobTitle){
         return this.jobTitleService.add(jobTitle);
     }

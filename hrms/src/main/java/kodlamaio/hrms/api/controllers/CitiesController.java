@@ -25,7 +25,12 @@ public class CitiesController {
         return this.cityService.getAll();
     }
 
-    @PostMapping("/add")
+    @GetMapping("/getAllByPage")
+    public DataResult<List<City>> getAll(int pageNo, int pageSize) {
+        return this.cityService.getAll(pageNo,pageSize);
+    }
+
+        @PostMapping("/add")
     public Result add(@RequestBody City city){
         return this.cityService.add(city);
     }

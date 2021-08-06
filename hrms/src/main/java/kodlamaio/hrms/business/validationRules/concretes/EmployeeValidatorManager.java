@@ -10,8 +10,8 @@ import org.apache.logging.log4j.util.Strings;
 public class EmployeeValidatorManager extends UserValidatorManager implements EmployeeValidatorService {
     @Override
     public Result employeeNullCheck(Employee employee) {
-        if(!super.userNullCheck(employee).isSuccess() || (Strings.isNotEmpty(employee.getFirstName())) ||
-                (Strings.isNotEmpty(employee.getLastName()))){
+        if(!super.userNullCheck(employee).isSuccess() || (Strings.isNotEmpty(employee.getEmployeeFirstName())) ||
+                (Strings.isNotEmpty(employee.getEmployeeLastName()))){
             return new ErrorResult("Alanlar Boş Bırakılamaz");
         }
         return new SuccessResult();

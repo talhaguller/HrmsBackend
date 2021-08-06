@@ -4,6 +4,7 @@ import kodlamaio.hrms.business.abstracts.JobAdvertisementService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.JobAdvertisement;
+import kodlamaio.hrms.entities.dtos.JobAdvertisementWithEmployerDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,7 +26,22 @@ public class JobAdvertisementsController {
         return this.jobAdvertisementService.getAll();
     }
 
-    @PostMapping("/add")
+    @GetMapping("/getAllByPage")
+    public DataResult<List<JobAdvertisement>> getAll(int pageNo, int pageSize) {
+        return this.jobAdvertisementService.getAll(pageNo,pageSize);
+    }
+
+    @GetMapping("/getAllAsc")
+    public DataResult<List<JobAdvertisement>> getAllSortedAsc() {
+        return this.jobAdvertisementService.getAllSortedAsc();
+    }
+
+    /*@GetMapping("/getAllDesc")
+    public DataResult<List<JobAdvertisement>> getAllSortedDesc() {
+        return this.jobAdvertisementService.getAllSortedDesc();
+    }
+*/
+        @PostMapping("/add")
     public Result add(@RequestBody JobAdvertisement jobAdvertisement){
         return this.jobAdvertisementService.add(jobAdvertisement);
     }
@@ -38,6 +54,11 @@ public class JobAdvertisementsController {
     @GetMapping("/getByAppealDeadline")
     public DataResult<List<JobAdvertisement>> getByAppealDeadline(){
         return this.jobAdvertisementService.getByAppealDeadline();
+    }
+
+    @GetMapping("/getJobAdvertisementWithEmployerDetails")
+    public DataResult<List<JobAdvertisementWithEmployerDto>> getJobAdvertisementWithEmployerDetails(){
+        return this.jobAdvertisementService.getJobAdvertisementWithEmployerDetails();
     }
 }
 

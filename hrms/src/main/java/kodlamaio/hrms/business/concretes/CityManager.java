@@ -7,6 +7,8 @@ import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.CityDao;
 import kodlamaio.hrms.entities.concretes.City;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +21,14 @@ public class CityManager implements CityService {
     @Override
     public DataResult<List<City>> getAll() {
         return new SuccessDataResult<List<City>>(this.cityDao.findAll(), "Veri Listelendi");
+    }
+
+    @Override
+    public DataResult<List<City>> getAll(int pageNo, int pageSize) {
+
+        Pageable pageable = PageRequest.of(pageNo,pageSize);
+
+        return new SuccessDataResult<List<City>>(this.cityDao.findAll(pageable).getContent(), "Veri Sıralandı");
     }
 
     @Override

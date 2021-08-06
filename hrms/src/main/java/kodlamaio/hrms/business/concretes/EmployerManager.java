@@ -7,8 +7,11 @@ import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.EmployerDao;
+import kodlamaio.hrms.entities.concretes.Employee;
 import kodlamaio.hrms.entities.concretes.Employer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,6 +31,13 @@ public class EmployerManager implements EmployerService {
     public DataResult<List<Employer>> getAll() {
         return new SuccessDataResult<List<Employer>>(this.employerDao.findAll(),"Data Listelendi");
     }
+
+    @Override
+    public DataResult<List<Employer>> getAll(int pageNo, int pageSize) {
+
+        Pageable pageable = PageRequest.of(pageNo,pageSize);
+
+        return new SuccessDataResult<List<Employer>>(this.employerDao.findAll(pageable).getContent(),"Veri Sıralandı");    }
 
     @Override
     public Result add(Employer employer) {

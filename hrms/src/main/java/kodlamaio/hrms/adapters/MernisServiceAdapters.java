@@ -17,8 +17,8 @@ public class MernisServiceAdapters implements CheckRealPerson {
 
         try {
             result = check.TCKimlikNoDogrula(Long.parseLong(candidate.getIdentityNumber()),
-                    candidate.getFirstName().toUpperCase(new Locale("tr")),
-                    candidate.getLastName().toUpperCase(new Locale("tr")),
+                    candidate.getCandidateFirstName().toUpperCase(new Locale("tr")),
+                    candidate.getCandidateLastName().toUpperCase(new Locale("tr")),
                     candidate.getBirthYear());
         } catch (Exception e) {
             e.printStackTrace();

@@ -12,9 +12,10 @@ public class CandidateValidatorManager extends UserValidatorManager implements C
     @Override
     public Result candidateNullCheck(Candidate candidate) {
 
-        if(!(super.userNullCheck(candidate).isSuccess() && !(Strings.isNotEmpty(candidate.getFirstName())) &&
-                !(Strings.isNotEmpty(candidate.getLastName())) && !(Strings.isNotEmpty(candidate.getIdentityNumber())) &&
-                !(candidate.getBirthYear() == null))){
+        if(!(super.userNullCheck(candidate).isSuccess() && !(Strings.isNotEmpty(candidate.getCandidateFirstName())) &&
+                !(Strings.isNotEmpty(candidate.getCandidateLastName())) && !(Strings.isNotEmpty(candidate.getIdentityNumber())) //&&
+                //!(candidate.getBirthYear() == null)
+    )){
             return new ErrorResult("Alanlar Boş Bırakılamaz");
 
         }

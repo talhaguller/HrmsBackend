@@ -12,12 +12,12 @@ import java.time.LocalDateTime;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "job_advertisement")
+@Table(name = "job_advertisements")
 public class JobAdvertisement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
+    @Column(name = "job_advertisement_id")
+    private int jobAdvertisementId;
 
     @Column(name = "job_description")
     private String jobDescription;
@@ -53,4 +53,8 @@ public class JobAdvertisement {
     @ManyToOne()
     @JoinColumn(name = "city_id")
     private City city;
+
+    @ManyToOne()
+    @JoinColumn(name = "employer_id")
+    private Employer employer;
 }

@@ -1,5 +1,6 @@
 package kodlamaio.hrms.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,11 +13,12 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "candidates")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","users"})
 public class Candidate extends User{
 
     @Id
     @Column(name = "candidate_id")
-    private int candidate;
+    private int candidateId;
 
     @Column(name = "candidate_first_name")
     private String candidateFirstName;

@@ -20,9 +20,14 @@ public class CandidatesController {
         this.candidateService = candidateService;
     }
 
-    @GetMapping("/getall")
+    @GetMapping("/getAll")
     public DataResult<List<Candidate>>   getAll(){
         return this.candidateService.getAll();
+    }
+
+    @GetMapping("/getAllByPage")
+    public DataResult<List<Candidate>> getAll(int pageNo, int pageSize) {
+        return this.candidateService.getAll(pageNo,pageSize);
     }
 
     @PostMapping("/add")

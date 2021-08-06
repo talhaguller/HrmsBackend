@@ -25,6 +25,11 @@ public class EmployersController {
     return this.employerService.getAll();
     }
 
+    @GetMapping("/getAllByPage")
+    public DataResult<List<Employer>> getAll(int pageNo, int pageSize) {
+        return this.employerService.getAll(pageNo,pageSize);
+    }
+
     @PostMapping("/add")
     public Result add(@RequestBody Employer employer){
         return this.employerService.add(employer);

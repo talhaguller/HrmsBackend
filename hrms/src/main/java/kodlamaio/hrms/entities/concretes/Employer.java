@@ -1,5 +1,6 @@
 package kodlamaio.hrms.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "employers")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","users"})
 public class Employer extends User{
 
 
@@ -30,6 +32,9 @@ public class Employer extends User{
 
     @OneToMany(mappedBy = "employer")
     private List<User> users;
+
+    @OneToMany(mappedBy = "employer")
+    private List<JobAdvertisement> jobAdvertisements;
 
 
 }

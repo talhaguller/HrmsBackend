@@ -6,8 +6,11 @@ import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.JobTitleDao;
+import kodlamaio.hrms.entities.concretes.JobAdvertisement;
 import kodlamaio.hrms.entities.concretes.JobTitle;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,6 +28,14 @@ public class JobTitleManager implements JobTitleService {
     @Override
     public DataResult<List<JobTitle>> getAll() {
         return new SuccessDataResult<List<JobTitle>>(this.jobTitleDao.findAll(),"İş Pozisyonu Listelendi");
+    }
+
+    @Override
+    public DataResult<List<JobTitle>> getAll(int pageNo, int pageSize) {
+
+        Pageable pageable = PageRequest.of(pageNo,pageSize);
+
+        return new SuccessDataResult<List<JobTitle>>(this.jobTitleDao.findAll(pageable).getContent(),"Veri Sıralandı");
     }
 
     @Override
